@@ -25,7 +25,7 @@ We will provide some examples of how to use this.
 Create a state object by creating a new instance of the `State` object.
 Give this state a unique name and provide fields for the state you like to store together with their default values.
 
-```
+```javascript
 var state = new State('hackersPage', {  // unique name of this state object
   sort: null,         // sorting order, used to sort table of hackers
   selectedDoc: null,  // the selected hacker in the table of hackers
@@ -39,7 +39,7 @@ Now we have created a state object holding information about how the table of ha
 
 Because modifying state is always be done by calling `get` and `set` functions, it will be always clear where state maniuplations are located in your code.
 
-```
+```javascript
 // setting state field
 state.set('sort', -1);
 
@@ -53,7 +53,7 @@ state.set('selectedDoc', doc);
 
 You can also set multiple values at once:
 
-```
+```javascript
 // setting multiple state fields
 state.setState({sort: -1, visible: true});
 
@@ -72,7 +72,7 @@ Additional there is `setDefault(..)` and `setDefaultState(..)` corresponding to 
 
 Test for equality in the same way as we did with `Session.equals`
 
-```
+```javascript
 var newSort = state.equals('sort', -1) ? 1 : -1;
 state.set('sort', newSort);
 ```
@@ -82,7 +82,7 @@ state.set('sort', newSort);
 
 Some additional features are available.
 
-```
+```javascript
 // invert boolean; if visible is true it becomes false, if it is false it becomes true
 state.toggle('visible');  
 
@@ -99,7 +99,7 @@ If user clicks a tab it becomes activated. If user clicks the same tab again it 
 
 With observe we can track state modification. You can provide a callback function that will be called when your state field changes.
 
-```
+```javascript
 state.observe('visible', function(newValue, previousValue) {
   console.log('Visibility changed from', previousValue, 'to', newValue);
 });
